@@ -1,0 +1,144 @@
+<a id="recent_topics"></a>
+<!-- IF .pagination and not RT_ALT_LOCATION -->
+<div class="action-bar">
+	<div class="pagination">
+		<!-- INCLUDE pagination.html -->
+	</div>
+</div>
+<!-- ENDIF -->
+
+<!-- BEGIN recent_topics -->
+	<!-- IF not recent_topics.S_TOPIC_TYPE_SWITCH and not recent_topics.S_FIRST_ROW -->
+		</tbody>
+		</table>
+	</div>
+	<!-- ENDIF -->
+
+	<!-- IF recent_topics.S_FIRST_ROW or not recent_topics.S_TOPIC_TYPE_SWITCH -->
+	<div class="table-responsive recent-topics">
+		<table class="table table-striped table-bordered">
+			<thead class="topiclist">
+				<th class="topic-name"><i class="fa fa-comments-o"></i> {L_RECENT_TOPICS}</th>
+				<th class="posts hidden-xs"><i class="fa fa-reply"></i> {L_REPLIES}</th>
+				<th class="views hidden-xs"><i class="fa fa-eye"></i> {L_VIEWS}</th>
+				<th class="lastpost hidden-xs"><i class="fa fa-history"></i> <span>{L_LAST_POST}</span></dd>
+			</thead>
+			<tbody>
+	<!-- ENDIF -->
+
+		<tr class="<!-- IF recent_topics.S_POST_GLOBAL --> global-announce<!-- ENDIF --><!-- IF recent_topics.S_POST_ANNOUNCE --> announce<!-- ENDIF --><!-- IF recent_topics.S_POST_STICKY --> sticky<!-- ENDIF --><!-- IF recent_topics.S_TOPIC_REPORTED --> reported<!-- ENDIF -->">
+			<td title="{recent_topics.TOPIC_FOLDER_IMG_ALT}">
+				<div class="pull-left forum-topic-icon">
+					<a href="{recent_topics.U_VIEW_TOPIC}" class="btn <!-- IF recent_topics.S_UNREAD_TOPIC -->btn-info<!-- ELSE -->btn-default<!-- ENDIF --> btn-lg tooltip-link hidden-xs" title="{recent_topics.TOPIC_FOLDER_IMG_ALT}">
+						<!-- IF recent_topics.S_TOPIC_LOCKED -->
+							<i class="fa fa-lock fa-fw"></i>
+						<!-- ELSEIF recent_topics.S_POST_GLOBAL -->
+							<i class="fa fa-info-circle fa-fw"></i>
+						<!-- ELSEIF recent_topics.S_POST_ANNOUNCE -->
+							<i class="fa fa-bullhorn fa-fw"></i>
+						<!-- ELSEIF recent_topics.S_POST_STICKY -->
+							<i class="fa fa-thumb-tack fa-fw"></i>
+						<!-- ELSEIF recent_topics.S_HAS_POLL -->
+							<i class="fa fa-bar-chart fa-fw"></i>
+						<!-- ELSE -->
+							<i class="fa fa-file-text-o fa-fw"></i>
+						<!-- ENDIF -->
+					</a>
+					<div class="visible-xs-inline">
+						<!-- IF recent_topics.S_TOPIC_LOCKED -->
+							<i class="fa fa-lock fa-fw"></i>
+						<!-- ELSEIF recent_topics.S_POST_GLOBAL -->
+							<i class="fa fa-info-circle fa-fw"></i>
+						<!-- ELSEIF recent_topics.S_POST_ANNOUNCE -->
+							<i class="fa fa-bullhorn fa-fw"></i>
+						<!-- ELSEIF recent_topics.S_POST_STICKY -->
+							<i class="fa fa-thumb-tack fa-fw"></i>
+						<!-- ELSEIF recent_topics.S_HAS_POLL -->
+							<i class="fa fa-bar-chart fa-fw"></i>
+						<!-- ELSE -->
+							<i class="fa fa-file-text-o fa-fw"></i>
+						<!-- ENDIF -->
+					</div>
+				</div>
+				<div class="pull-right topic-pagination">
+					<div class="btn-group pagination-line">
+						<!-- IF recent_topics.S_TOPIC_UNAPPROVED or recent_topics.S_POSTS_UNAPPROVED -->
+							<a href="{recent_topics.U_MCP_QUEUE}" class="btn btn-warning btn-xs"><i class="fa fa-exclamation-triangle"></i></a>
+						<!-- ENDIF -->
+						<!-- IF recent_topics.S_TOPIC_DELETED -->
+							<a href="{recent_topics.U_MCP_QUEUE}" class="btn btn-warning btn-xs"><i class="fa fa-trash"></i></a>
+						<!-- ENDIF -->
+						<!-- IF recent_topics.S_TOPIC_REPORTED -->
+							<a href="{recent_topics.U_MCP_REPORT}" class="btn btn-warning btn-xs"><i class="fa fa-exclamation-triangle"></i></a>
+						<!-- ENDIF -->
+						<!-- IF recent_topics.ATTACH_ICON_IMG -->
+							<a href="#" class="btn btn-default btn-xs disabled"><i class="fa fa-paperclip"></i></a>
+						<!-- ENDIF -->
+					</div>
+				</div>
+
+				<!-- IF recent_topics.S_UNREAD_TOPIC and not S_IS_BOT --><a href="{recent_topics.U_NEWEST_POST}" class="icon-link"></a><!-- ENDIF -->
+				<!-- EVENT topiclist_row_prepend -->
+				<!-- IF recent_topics.S_UNREAD_TOPIC and not S_IS_BOT --><a href="{recent_topics.U_NEWEST_POST}">{NEWEST_POST_IMG}</a> <!-- ENDIF --><a href="{recent_topics.U_VIEW_TOPIC}" class="topictitle">{recent_topics.TOPIC_TITLE}</a>
+
+				<!-- IF not S_IS_BOT -->
+				<div class="visible-xs-block">
+					{L_LAST_POST} {L_POST_BY_AUTHOR} {recent_topics.LAST_POST_AUTHOR_FULL} &laquo; <a href="{recent_topics.U_LAST_POST}" title="{L_GOTO_LAST_POST}">{recent_topics.LAST_POST_TIME}</a>
+					<!-- IF recent_topics.S_POST_GLOBAL and FORUM_ID != recent_topics.FORUM_ID --><br />{L_POSTED} {L_IN} <a href="{recent_topics.U_VIEW_FORUM}">{recent_topics.FORUM_NAME}</a><!-- ENDIF -->
+				</div>
+				<!-- IF recent_topics.REPLIES --><span class="visible-xs-block">{L_REPLIES}{L_COLON} <strong>{recent_topics.REPLIES}</strong></span><!-- ENDIF -->
+				<!-- ENDIF -->
+
+				<!-- IF .recent_topics.pagination -->
+				<div class="pagination">
+					<ul>
+					<!-- BEGIN pagination -->
+						<!-- IF recent_topics.pagination.S_IS_PREV -->
+						<!-- ELSEIF recent_topics.pagination.S_IS_CURRENT --><li class="active"><span>{recent_topics.pagination.PAGE_NUMBER}</span></li>
+						<!-- ELSEIF recent_topics.pagination.S_IS_ELLIPSIS --><li class="ellipsis"><span>{L_ELLIPSIS}</span></li>
+						<!-- ELSEIF recent_topics.pagination.S_IS_NEXT -->
+						<!-- ELSE --><li><a href="{recent_topics.pagination.PAGE_URL}">{recent_topics.pagination.PAGE_NUMBER}</a></li>
+						<!-- ENDIF -->
+					<!-- END pagination -->
+					</ul>
+				</div>
+				<!-- ENDIF -->
+
+				<div class="hidden-xs">
+					<!-- IF recent_topics.S_HAS_POLL -->{POLL_IMG} <!-- ENDIF -->
+					{L_POST_BY_AUTHOR} {recent_topics.TOPIC_AUTHOR_FULL} &raquo; {recent_topics.FIRST_POST_TIME}
+					<!-- IF recent_topics.S_POST_GLOBAL and FORUM_ID != recent_topics.FORUM_ID --> &raquo; {L_IN} <a href="{recent_topics.U_VIEW_FORUM}">{recent_topics.FORUM_NAME}</a>
+					<!-- ELSEIF recent_topics.U_VIEW_FORUM and recent_topics.FORUM_NAME --> &raquo; {L_IN} <!-- BEGIN parent_forums --><a href="{recent_topics.parent_forums.U_VIEW_FORUM}">{recent_topics.parent_forums.FORUM_NAME}</a> &raquo; <!-- END parent_forums --><a href="{recent_topics.U_VIEW_FORUM}">{recent_topics.FORUM_NAME}</a><!-- ENDIF -->
+				</div>
+
+				<!-- EVENT topiclist_row_append -->
+				</div>
+			</td>
+			<td class="posts hidden-xs"><span class="badge">{recent_topics.REPLIES}</span></td>
+			<td class="views hidden-xs"><span class="badge">{recent_topics.VIEWS}</span></td>
+			<td class="lastpost hidden-xs"><span><dfn>{L_LAST_POST} </dfn>{L_POST_BY_AUTHOR} {recent_topics.LAST_POST_AUTHOR_FULL}
+				<!-- IF not S_IS_BOT --><a href="{recent_topics.U_LAST_POST}" title="{L_GOTO_LAST_POST}">{LAST_POST_IMG}</a> <!-- ENDIF --><br />{recent_topics.LAST_POST_TIME}</span>
+			</td>
+		</tr>
+
+	<!-- IF recent_topics.S_LAST_ROW -->
+			</tbody>
+		</table>
+	</div>
+	<!-- ENDIF -->
+
+<!-- BEGINELSE -->
+	<div class="panel">
+		<div class="inner">
+		<strong>{L_NO_TOPICS}</strong>
+		</div>
+	</div>
+<!-- END recent_topics -->
+
+<!-- IF .pagination and RT_ALT_LOCATION -->
+<div class="action-bar">
+	<div class="pagination">
+		<!-- INCLUDE pagination.html -->
+	</div>
+</div>
+<!-- ENDIF -->
