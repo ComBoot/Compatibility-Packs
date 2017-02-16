@@ -1,0 +1,38 @@
+			<dt class="chatform">
+				<!-- IF not S_IS_BOT -->
+					<!-- IF S_AJAXCHAT_POST -->
+						<form name="postform" id="chat-text" method="post" action="javascript:void(0);" onsubmit="handle_send('add', this)">
+							<fieldset>
+								{S_FORM_TOKEN}
+								<!-- INCLUDE chat_body_font_colour_hold.html -->
+								<input type="text" tabindex="1" name="message" id="message-comboot" class="inputbox chatinput"<!-- IF not S_AJAX_CHAT_AUTOCOMPLETE --> autocomplete="off"<!-- ENDIF --> />
+								<br />
+								<!-- EVENT spaceace_ajax_chat_buttons_before -->
+								<input type="submit" class="btn btn-primary" value="{{ lang('SUBMIT') }}" title="{{ lang('CHAT_SUBMIT_MESSAGE') }}" name="submit" tabindex="6" accesskey="s" />
+								<!-- IF S_AJAXCHAT_BBCODE -->
+									<!-- EVENT spaceace_ajax_chat_bbcode_before -->
+									<input type="button" class="btn btn-primary" id="bbcodes" value="{{ lang('BBCODES') }}" />
+									<!-- EVENT spaceace_ajax_chat_bbcode_after -->
+								<!-- ENDIF -->
+								<!-- IF S_SMILIES_ALLOWED -->
+									<!-- EVENT spaceace_ajax_chat_smilies_before -->
+									<input type="button" class="btn btn-primary" name="smilies" id="smilies" value="{{ lang('SMILIES') }}" />
+									<!-- EVENT spaceace_ajax_chat_smilies_after -->
+								<!-- ENDIF -->
+								<!-- EVENT spaceace_ajax_chat_buttons_mid -->
+								<input type="button" class="btn btn-primary" onclick="popup('{FILENAME}/archive', 1000, 565); return false;" value="{{ lang('CHAT_ARCHIVE') }}" title="{{ lang('CHAT_ARCHIVE_EXPLAIN') }}" />
+								<input type="button" class="btn btn-primary" onclick="popup('{FILENAME}/popup', 1000, 665); return false;" value="{{ lang('CHAT_POPUP') }}" title="{{ lang('CHAT_POPUP_EXPLAIN') }}" />
+								<!-- IF S_AJAXCHAT_BBCODE -->
+									<input type="button" class="btn btn-primary" name="chat_bbpalette" id="chat_bbpalette" value="{{ lang('CHAT_FONT_COLOR') }}" />
+								<!-- ENDIF -->
+								<!-- EVENT spaceace_ajax_chat_buttons_after -->
+							</fieldset>
+						<!-- INCLUDE chat_body_buttons.html -->
+						</form>
+					<!-- ELSE -->
+						{{ lang('NO_POST_IN_CHAT') }}
+					<!-- ENDIF -->
+				<!-- ELSE -->
+					<div class="input_message">{{ lang('GUEST_MESSAGE') }}</div>
+				<!-- ENDIF -->
+			</dt>

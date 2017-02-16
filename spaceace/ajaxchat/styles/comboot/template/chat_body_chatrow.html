@@ -1,0 +1,42 @@
+<!-- BEGIN chatrow -->
+	<div id="p{chatrow.MESSAGE_ID}" class="chatpost <!-- IF not S_AJAX_CHAT_CHATROW_FULL -->original <!-- ENDIF -->bg{chatrow.CLASS}<!-- IF not S_AJAX_CHAT_MESSAGES_DOWN --> chat-messages-down<!-- ENDIF -->">
+		<div class="chat-postbody">
+			<div class="<!-- IF S_AJAX_CHAT_AVATARS -->chat-postprofile<!-- ELSE -->chat-postprofile-no-avatar<!-- ENDIF -->" id="profile{chatrow.MESSAGE_ID}">
+				<div <!-- IF S_AJAX_CHAT_AVATARS -->class="chat-avatars"<!-- ENDIF -->>
+					<!-- IF S_AJAX_CHAT_AVATARS -->
+						<!-- IF chatrow.USER_AVATAR -->
+							<!-- IF S_AJAX_CHAT_AVATAR_HOVER -->
+								<span>{chatrow.USER_AVATAR}</span>
+							<!-- ENDIF -->
+								{chatrow.USER_AVATAR_THUMB}
+						<!-- ELSE -->
+							<!-- IF S_AJAX_CHAT_AVATAR_HOVER -->
+								<span>
+									<img src="{STYLE_PATH}/theme/images/no_avatar.gif" height="128" alt="" />
+								</span>
+							<!-- ENDIF -->
+							<img src="{STYLE_PATH}/theme/images/no_avatar.gif" height="20" alt="" />
+						<!-- ENDIF -->
+					<!-- ENDIF -->
+				</div>
+				<div class="chat-usernames">
+					<!-- IF not S_IS_BOT and S_USER_LOGGED_IN and SCRIPT_NAME neq 'app/chat/archive' -->
+						<!-- IF chatrow.USER_COLOR -->
+							<a href="#" style="color: #{chatrow.USER_COLOR}" onclick="insert_text('[color=#{chatrow.USER_COLOR}][b]&#64;{chatrow.USERNAME_A}&nbsp;:&nbsp;[/color][/b]', true);return false;" title="{L_RESPOND}">&#64;</a>
+						<!-- ELSE -->
+							<a href="#" onclick="insert_text('[b]&#64;{chatrow.USERNAME_A}&nbsp;:&nbsp;[/b]', true);return false;" title="{L_RESPOND}">&#64;</a>
+						<!-- ENDIF -->
+					<!-- ELSE -->
+						&#64;
+					<!-- ENDIF -->
+					{chatrow.USERNAME_FULL}&nbsp;<b class="chat-time">&laquo;&nbsp;{chatrow.TIME}&nbsp;&raquo;</b>
+				</div>
+			</div>
+			{SMILIES_PATH}
+			<div class="message-comboot">
+				<!-- INCLUDE chatrow_message_icons.html -->
+				{chatrow.MESSAGE}
+			</div>
+		</div>
+	</div>
+<!-- END chatrow -->

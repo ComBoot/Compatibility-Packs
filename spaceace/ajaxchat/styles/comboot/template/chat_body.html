@@ -1,0 +1,73 @@
+<!-- IF S_CHAT_ENABLED -->
+	<!-- IF S_AJAXCHAT_VIEW -->
+		<!-- IF S_GET_CHAT -->
+			<!-- INCLUDE chat_body_readadd.html -->
+		<!-- ELSE -->
+			<!-- IF SCRIPT_NAME == 'app/chat' -->
+				<!-- INCLUDE overall_header.html -->
+			<!-- ENDIF -->
+			<!-- IF SCRIPT_NAME == 'app/chat/popup' or SCRIPT_NAME == 'app/chat/archive' -->
+				<!-- INCLUDE simple_header.html -->
+				<div>
+			<!-- ENDIF -->
+			<!-- INCLUDE chat_body_script_vars.html -->
+			<!-- INCLUDEJS @spaceace_ajaxchat/js/ajax_chat.js -->
+			<!-- EVENT spaceace_ajax_chat_chat_body_before -->
+			<div id="ajaxchat">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title chat-header-link"><!-- IF SCRIPT_NAME == 'index' --><a href="{U_CHAT}">{{ lang('CHAT_EXPLAIN') }}</a><!-- ELSE -->{{ lang('CHAT_EXPLAIN') }}<!-- ENDIF --></h3>
+						<!-- IF SCRIPT_NAME neq 'app/chat/archive' -->
+							<!-- IF S_AJAX_CHAT_MESSAGES_DOWN -->
+								<!-- INCLUDE chat_body_input.html -->
+							<!-- ENDIF -->
+						<!-- ENDIF -->
+					</div>
+				</div>
+					<!-- IF CHAT_RULES and SCRIPT_NAME neq 'app/chat/archive' -->
+						<div class="navbar chatrules">
+							<span>{CHAT_RULES}</span>
+						</div>
+					<!-- ENDIF -->
+				<div>
+					<div class="shout-body<!-- IF S_WHOIS_CHATTING --><!-- IF S_AJAX_CHAT_ONLINELIST and SCRIPT_NAME neq 'app/chat/archive' --> shouts<!-- ENDIF --><!-- ENDIF --><!-- IF not S_AJAX_CHAT_ONLINELIST or SCRIPT_NAME == 'app/chat/archive' or not S_WHOIS_CHATTING --> chat_online_off<!-- ENDIF --><!-- IF S_CHAT or S_POPUP or SCRIPT_NAME == 'app/chat/archive' --> main<!-- ENDIF -->">
+						<div id="chat" <!-- IF not S_AJAX_CHAT_MESSAGES_DOWN -->class="chat-messages-down"<!-- ENDIF --> >
+							<!-- INCLUDE chat_body_chatrow.html -->
+						</div>
+					</div>
+					<!-- IF S_WHOISONLINE -->
+						<div class="whois whois-comboot<!-- IF S_CHAT or S_POPUP --> main<!-- ENDIF --><!-- IF not S_AJAX_CHAT_ONLINELIST or SCRIPT_NAME == 'app/chat/archive' or not S_WHOIS_CHATTING --> whois_online_off<!-- ENDIF -->">
+							<h3>
+								{{ lang('WHOIS_CHATTING') }}
+							</h3>
+							<div id="whois_online">
+								<!-- INCLUDE chat_body_whois.html -->
+							</div>
+						</div>
+					<!-- ENDIF -->
+				</div>
+				<div class="breadcrumb no-margin-bottom">
+					<!-- IF SCRIPT_NAME neq 'app/chat/archive' -->
+						<!-- IF not S_AJAX_CHAT_MESSAGES_DOWN -->
+							<!-- INCLUDE chat_body_input.html -->
+						<!-- ENDIF -->
+					<!-- ENDIF -->
+					<div class="chatform">
+						<span class="list chat-icon details">{{ lang('DETAILS') }}</span>
+						<img src="{BOARD_URL}ext/spaceace/ajaxchat/styles/all/theme/images/check_indicator.gif" id="check_indicator" alt="check_indicator" title="{{ lang('VERSION') }}" />
+						<img src="{BOARD_URL}ext/spaceace/ajaxchat/styles/all/theme/images/act_indicator.gif" id="act_indicator" alt="act_indicator" title="{{ lang('VERSION') }}" />
+						<strong>&nbsp;{{ lang('UPDATES') }}&nbsp;<span id="update_seconds">{REFRESH_TIME}</span>&nbsp;{{ lang('UNIT') }}</strong>
+					</div>
+				</div>
+			</div>
+			<!-- EVENT spaceace_ajax_chat_chat_body_after -->
+			<!-- IF SCRIPT_NAME == 'app/chat' -->
+				<!-- INCLUDE overall_footer.html -->
+			<!-- ENDIF -->
+			<!-- IF SCRIPT_NAME == 'app/chat/popup' or SCRIPT_NAME == 'app/chat/archive' -->
+				</div>
+				<!-- INCLUDE simple_footer.html -->
+			<!-- ENDIF -->
+		<!-- ENDIF -->
+	<!-- ENDIF -->
+<!-- ENDIF -->

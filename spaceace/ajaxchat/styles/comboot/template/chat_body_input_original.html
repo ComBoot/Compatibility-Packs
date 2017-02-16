@@ -1,0 +1,17 @@
+			<dt class="chatform">
+				<!-- IF not S_IS_BOT -->
+					<!-- IF S_AJAXCHAT_POST -->
+						<form name="postform" id="chat-text" method="post" action="javascript:void(0);" onsubmit="handle_send('add', this)">
+							<fieldset>
+								{S_FORM_TOKEN}
+								<input type="submit" class="btn btn-primary" value="{{ lang('SUBMIT') }}" title="{{ lang('CHAT_SUBMIT_MESSAGE') }}" name="submit" tabindex="6" accesskey="s" />
+								<input type="text" tabindex="1" name="message" id="message-comboot" class="inputbox chatinput nomargin"<!-- IF not S_AJAX_CHAT_AUTOCOMPLETE --> autocomplete="off"<!-- ENDIF --> />
+							</fieldset>
+						</form>
+					<!-- ELSE -->
+						{{ lang('NO_POST_IN_CHAT') }}
+					<!-- ENDIF -->
+				<!-- ELSE -->
+					<div class="input_message">{{ lang('GUEST_MESSAGE') }}</div>
+				<!-- ENDIF -->
+			</dt>

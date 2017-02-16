@@ -1,0 +1,40 @@
+<!-- INCLUDE simple_header.html -->
+<script type="text/javascript">
+// <![CDATA[
+var last_time = {TIME};
+var last_id = {LAST_ID};
+var read_interval = ({REFRESH_TIME} * 1000);
+var cookie_name = '{AJAX_CHAT_COOKIE_NAME}';
+var query_url	= '{FILENAME}';
+<!-- IF S_AJAXCHAT_BBCODE -->
+	var chatbbcodetrue = true;
+<!-- ELSE -->
+	var chatbbcodetrue = false;
+<!-- ENDIF -->
+<!-- IF S_AJAX_CHAT_MESSAGES_DOWN -->
+	var chatmessagedown = false;
+<!-- ELSE -->
+	var chatmessagedown = true;
+<!-- ENDIF -->
+//]]>
+</script>
+<!-- INCLUDEJS @spaceace_ajaxchat/js/ajax_chat.js -->
+<form method="post" action="" id="chat_edit">
+	<div class="panel chat_edit">
+		<div class="inner">
+				<h2>{{ lang('CHAT_EDIT') }}</h2>
+				<fieldset class="fields1">
+				<div>
+					<textarea id="message" style="height: 9em;" name="message" rows="7" cols="76" tabindex="3" class="inputbox" >{MESSAGE}</textarea>
+				</div>
+					<input type="hidden" name="chat_id" value="{CHAT_ID}" />
+				</fieldset>
+				<fieldset class="submit-buttons">
+					<input class="button1" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}" />&nbsp;
+					<input class="button2" type="reset" id="reset" name="reset" value="{{ lang('RESET') }}" />
+				</fieldset>
+		</div>
+	</div>
+</form>
+
+<!-- INCLUDE simple_footer.html -->

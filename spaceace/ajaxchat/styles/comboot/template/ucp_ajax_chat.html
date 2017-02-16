@@ -1,0 +1,111 @@
+<!-- INCLUDE ucp_header.html -->
+
+<form id="ucp" method="post" action="{S_UCP_ACTION}"{S_FORM_ENCTYPE}>
+<!-- IF S_AJAXCHAT_VIEW -->
+<h2>{{ lang('USER_AJAXCHAT_SETTINGS') }}</h2>
+
+<div class="panel">
+	<div class="inner">
+
+	<fieldset>
+	<!-- IF ERROR --><p class="error">{ERROR}</p><!-- ENDIF -->
+
+	<dl>
+		<dt><label for="ajax_chat_view0">{{ lang('USER_AJAX_CHAT_VIEW') }}{{ lang('COLON') }}</label></dt>
+		<dd>
+			<label for="ajax_chat_view1"><input type="radio" name="ajax_chat_view" id="view_chat1" value="1"<!-- IF S_AJAX_CHAT_VIEW --> checked="checked"<!-- ENDIF --> /> {{ lang('YES') }}</label> 
+			<label for="ajax_chat_view0"><input type="radio" name="ajax_chat_view" id="view_chat0" value="0"<!-- IF not S_AJAX_CHAT_VIEW --> checked="checked"<!-- ENDIF --> /> {{ lang('NO') }}</label>
+		</dd>
+	</dl>
+	<!-- IF not S_AJAX_CHAT_POSITION_OVERRIDE -->
+		<dl>
+			<dt><label for="ajax_chat_position0">{{ lang('USER_AJAX_CHAT_POSITION') }}{{ lang('COLON') }}</label></dt>
+			<dd>
+				<label for="ajax_chat_position1"><input type="radio" name="ajax_chat_position" id="ajax_chat_position1" value="1"<!-- IF S_AJAX_CHAT_POSITION --> checked="checked"<!-- ENDIF --> /> {{ lang('CHAT_TOP') }}</label> 
+				<label for="ajax_chat_position0"><input type="radio" name="ajax_chat_position" id="ajax_chat_position0" value="0"<!-- IF not S_AJAX_CHAT_POSITION --> checked="checked"<!-- ENDIF --> /> {{ lang('CHAT_BOTTOM') }}</label>
+			</dd>
+		</dl>
+	<!-- ENDIF -->
+	<dl>
+		<dt><label for="ajax_chat_messages_down0">{{ lang('AJAX_CHAT_MESSAGES_DOWN') }}{{ lang('COLON') }}</label></dt>
+		<dd>
+			<label for="ajax_chat_messages_down1"><input type="radio" name="ajax_chat_messages_down" id="ajax_chat_messages_down1" value="1"<!-- IF S_AJAX_CHAT_MESSAGES_DOWN --> checked="checked"<!-- ENDIF --> /> {{ lang('CHAT_TOP') }}</label> 
+			<label for="ajax_chat_messages_down0"><input type="radio" name="ajax_chat_messages_down" id="ajax_chat_messages_down0" value="0"<!-- IF not S_AJAX_CHAT_MESSAGES_DOWN --> checked="checked"<!-- ENDIF --> /> {{ lang('CHAT_BOTTOM') }}</label>
+		</dd>
+	</dl>
+	<!-- IF not S_AJAX_CHAT_VIEWFORUM_OVERRIDE -->
+		<dl>
+			<dt><label for="ajax_chat_viewforum0">{{ lang('USER_AJAX_CHAT_VIEWFORUM') }}{{ lang('COLON') }}</label></dt>
+			<dd>
+				<label for="ajax_chat_viewforum1"><input type="radio" name="ajax_chat_viewforum" id="ajax_chat_viewforum1" value="1"<!-- IF S_AJAX_CHAT_VIEWFORUM --> checked="checked"<!-- ENDIF --> /> {{ lang('YES') }}</label> 
+				<label for="ajax_chat_viewforum0"><input type="radio" name="ajax_chat_viewforum" id="ajax_chat_viewforum0" value="0"<!-- IF not S_AJAX_CHAT_VIEWFORUM --> checked="checked"<!-- ENDIF --> /> {{ lang('NO') }}</label>
+			</dd>
+		</dl>
+	<!-- ENDIF -->
+	<!-- IF not S_AJAX_CHAT_VIEWTOPIC_OVERRIDE -->
+		<dl>
+			<dt><label for="ajax_chat_viewtopic0">{{ lang('USER_AJAX_CHAT_VIEWTOPIC') }}{{ lang('COLON') }}</label></dt>
+			<dd>
+				<label for="ajax_chat_ajax_chat_viewtopic1"><input type="radio" name="ajax_chat_viewtopic" id="ajax_chat_viewtopic1" value="1"<!-- IF S_AJAX_CHAT_VIEWTOPIC --> checked="checked"<!-- ENDIF --> /> {{ lang('YES') }}</label> 
+				<label for="ajax_chat_ajax_chat_viewtopic0"><input type="radio" name="ajax_chat_viewtopic" id="ajax_chat_viewtopic0" value="0"<!-- IF not S_AJAX_CHAT_VIEWTOPIC --> checked="checked"<!-- ENDIF --> /> {{ lang('NO') }}</label>
+			</dd>
+		</dl>
+	<!-- ENDIF -->
+	<dl>
+		<dt><label for="ajax_chat_avatars0">{{ lang('USER_AJAX_CHAT_AVATARS') }}{{ lang('COLON') }}</label></dt>
+		<dd>
+			<label for="ajax_chat_avatars1"><input type="radio" name="ajax_chat_avatars" id="ajax_chat_avatars1" value="1"<!-- IF S_AJAX_CHAT_AVATARS --> checked="checked"<!-- ENDIF --> /> {{ lang('YES') }}</label> 
+			<label for="ajax_chat_avatars0"><input type="radio" name="ajax_chat_avatars" id="ajax_chat_avatars0" value="0"<!-- IF not S_AJAX_CHAT_AVATARS --> checked="checked"<!-- ENDIF --> /> {{ lang('NO') }}</label>
+		</dd>
+	</dl>
+	<dl>
+		<dt><label for="ajax_chat_avatar_hover0">{{ lang('USER_AJAX_CHAT_AVATAR_HOVER') }}{{ lang('COLON') }}</label></dt>
+		<dd>
+			<label for="ajax_chat_avatar_hover1"><input type="radio" name="ajax_chat_avatar_hover" id="ajax_chat_avatar_hover1" value="1"<!-- IF S_AJAX_CHAT_AVATAR_HOVER --> checked="checked"<!-- ENDIF --> /> {{ lang('YES') }}</label> 
+			<label for="ajax_chat_avatar_hover0"><input type="radio" name="ajax_chat_avatar_hover" id="ajax_chat_avatar_hover0" value="0"<!-- IF not S_AJAX_CHAT_AVATAR_HOVER --> checked="checked"<!-- ENDIF --> /> {{ lang('NO') }}</label>
+		</dd>
+	</dl>
+	<dl>
+		<dt><label for="ajax_chat_sound0">{{ lang('USER_AJAX_CHAT_SOUND') }}{{ lang('COLON') }}</label></dt>
+		<dd>
+			<label for="ajax_chat_sound1"><input type="radio" name="ajax_chat_sound" id="ajax_chat_sound1" value="1"<!-- IF S_AJAX_CHAT_SOUND --> checked="checked"<!-- ENDIF --> /> {{ lang('YES') }}</label> 
+			<label for="ajax_chat_sound0"><input type="radio" name="ajax_chat_sound" id="ajax_chat_sound0" value="0"<!-- IF not S_AJAX_CHAT_SOUND --> checked="checked"<!-- ENDIF --> /> {{ lang('NO') }}</label>
+		</dd>
+	</dl>
+	<dl>
+		<dt><label for="ajax_chat_onlinelist0">{{ lang('USER_AJAX_CHAT_ONLINELIST') }}{{ lang('COLON') }}</label></dt>
+		<dd>
+			<label for="ajax_chat_onlinelist1"><input type="radio" name="ajax_chat_onlinelist" id="ajax_chat_onlinelist1" value="1"<!-- IF S_AJAX_CHAT_ONLINELIST --> checked="checked"<!-- ENDIF --> /> {{ lang('YES') }}</label> 
+			<label for="ajax_chat_onlinelist0"><input type="radio" name="ajax_chat_onlinelist" id="ajax_chat_onlinelist0" value="0"<!-- IF not S_AJAX_CHAT_ONLINELIST --> checked="checked"<!-- ENDIF --> /> {{ lang('NO') }}</label>
+		</dd>
+	</dl>
+	<dl>
+		<dt><label for="ajax_chat_autocomplete0">{{ lang('USER_AJAX_CHAT_AUTOCOMPLETE') }}{{ lang('COLON') }}</label></dt>
+		<dd>
+			<label for="ajax_chat_autocomplete1"><input type="radio" name="ajax_chat_autocomplete" id="ajax_chat_autocomplete1" value="1"<!-- IF S_AJAX_CHAT_AUTOCOMPLETE --> checked="checked"<!-- ENDIF --> /> {{ lang('YES') }}</label> 
+			<label for="ajax_chat_autocomplete0"><input type="radio" name="ajax_chat_autocomplete" id="ajax_chat_autocomplete0" value="0"<!-- IF not S_AJAX_CHAT_AUTOCOMPLETE --> checked="checked"<!-- ENDIF --> /> {{ lang('NO') }}</label>
+		</dd>
+	</dl>
+
+	</fieldset>
+
+	</div>
+</div>
+
+	<fieldset class="submit-buttons">
+		{S_HIDDEN_FIELDS}<input type="reset" value="{{ lang('RESET') }}" name="reset" class="button2" />&nbsp;
+		<input type="submit" name="submit" value="{{ lang('SUBMIT') }}" class="button1" />
+		{S_FORM_TOKEN}
+	</fieldset>
+<!-- ELSE -->
+	<h2>{{ lang('USER_AJAXCHAT_SETTINGS') }}</h2>
+
+	<div class="panel">
+		<div class="inner">
+			{{ lang('NO_VIEW_CHAT') }}
+		</div>
+	</div>
+<!-- ENDIF -->
+</form>
+
+<!-- INCLUDE ucp_footer.html -->
