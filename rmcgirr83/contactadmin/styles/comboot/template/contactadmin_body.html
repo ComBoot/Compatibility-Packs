@@ -1,0 +1,104 @@
+<!-- INCLUDE overall_header.html -->
+
+<form method="post" id="postform" name="postform" action="{S_CONTACT_ACTION}"{S_FORM_ENCTYPE}>
+	<div class="panel panel-default">
+		<!-- IF CONTACT_INFO -->
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					{L_ACP_CAT_CONTACTADMIN}
+				</h3>
+			</div>
+		<!-- ENDIF -->
+		<div class="panel-body">
+			<fieldset class="form-horizontal">
+				<p class="alert alert-info">{CONTACT_INFO}</p>
+
+				<!-- IF S_ERROR -->
+					<p class="alert alert-danger">{S_ERROR}</p>
+				<!-- ENDIF -->
+
+				<!-- IF not S_USER_LOGGED_IN -->
+					<div class="form-group">
+						<label for="username" class="control-label col-md-4">{L_CONTACT_YOUR_NAME}{L_COLON}</label>
+						<div class="col-md-6">
+							<input type="text" name="username" id="username" value="{USERNAME}" class="form-control" tabindex="1" />
+							<span class="help-block">
+								{L_CONTACT_YOUR_NAME_EXPLAIN}
+							</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="email" class="control-label col-md-4">{L_CONTACT_YOUR_EMAIL}{L_COLON}</label>
+						<div class="col-md-6">
+							<input type="email" name="email" id="email" value="{EMAIL}" class="form-control" tabindex="2" />
+							<span class="help-block">
+								{L_CONTACT_YOUR_EMAIL_EXPLAIN}
+							</span>
+						</div>
+					</div>
+				<!-- ENDIF -->
+				<!-- IF CONTACT_REASONS -->
+					<hr />
+					<div class="form-group">
+						<label for="contact_reason" class="control-label col-md-4">{L_CONTACT_REASON}{L_COLON}</label>
+						<div class="col-md-6">
+							<select name="contact_reason" id="contact_reason" tabindex="3">{CONTACT_REASONS}</select>
+						</div>
+					</div>
+				<!-- ENDIF -->
+				<!-- IF not CONTACT_REASONS -->
+					<div class="form-group">
+						<label for="contact_subject" class="control-label col-md-4">{L_SUBJECT}{L_COLON}</label>
+						<div class="col-md-6">
+							<input type="text" name="contact_subject" id="contact_subject" maxlength="64" value="{CONTACT_SUBJECT}" class="form-control" tabindex="4" />
+						</div>
+					</div>
+				<!-- ENDIF -->
+				<div class="form-group">
+					<label for="message" class="control-label col-md-4">{L_MESSAGE_BODY}{L_COLON}</label>
+					<div class="col-md-6">
+						<textarea name="message" id="message" class="form-control"  tabindex="5" onselect="storeCaret(this);" onclick="storeCaret(this);" onkeyup="storeCaret(this);" onfocus="initInsertions();" />{CONTACT_MESSAGE}</textarea>
+					</div>
+				</div>
+			</fieldset>
+			<hr/>
+			<!-- IF CAPTCHA_TEMPLATE -->
+				<fieldset class="form-horizontal">
+					<!-- DEFINE $CAPTCHA_TAB_INDEX = 8 -->
+					<!-- INCLUDE {CAPTCHA_TEMPLATE} -->
+				</fieldset>
+			<!-- ENDIF -->
+
+			<!-- IF S_ATTACH_BOX -->
+				<div class="panel panel-default" id="attach-panel">
+					<div class="panel-body">
+						<p>{L_ADD_ATTACHMENT_EXPLAIN}</p>
+						<fieldset class="form-horizontal" id="attach-panel-basic">
+							<div class="form-group">
+								<label for="fileupload" class="control-label col-md-4">{L_FILENAME}{L_COLON}</label>
+								<div class="col-md-6">
+									<input type="file" name="fileupload" id="fileupload" class="form-control" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="filecomment" class="control-label col-md-4">{L_FILE_COMMENT}{L_COLON}</label>
+								<div class="col-md-6">
+									<textarea name="filecomment" id="filecomment" rows="1" cols="40" class="form-control">{FILE_COMMENT}</textarea>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+			<!-- ENDIF -->
+		</div>
+		<div class="panel-footer">
+			<fieldset class="submit-buttons">
+				{S_HIDDEN_FIELDS}
+				<input type="submit" name="submit" id="submit" value="{L_SUBMIT}" class="btn btn-success" tabindex="9" />&nbsp;
+				{S_FORM_TOKEN}
+			</fieldset>
+		</div>
+	</div>
+</form>
+
+<!-- INCLUDE overall_footer.html -->
